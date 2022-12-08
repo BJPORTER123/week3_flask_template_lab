@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Events</h1>
+<form action="/events" method="post">
+    <b><label for="name">Name:</label></b>
+    <input type="text" name="name" id="name">
+
+    <b><label for="guests">Guests:</label></b>
+    <input type="number" name="guests" id="guests">
+
+    <b><label for="location">Location:</label></b>
+    <input type="text" name="location" id="location">
+    
+    <b><label for="description">Description:</label></b>
+    <input type="text" name="description" id="description">
+
+    <b><label for="date">Event Date:</label></b>
+    <input type="date" name="date" id="date">
+    
+    <b><label for="reoccuring">Reoccuring:</label></b>
+    <input type="checkbox" name="reoccuring" id="reoccuring">
+    <hr>
+    <input type="submit" value="Add Event">
+</form>
+
+{% for event in events %}  
+<div>
+    <p>
+    {{ event.name }} {{ event.guests }} {{ event.location }} {{ event.description}} {{ event.date }} {{ event.reoccuring }}
+    {% if events.reoccuring %}
+    <span>&#9989;</span>
+    {% endif %}
+    </p>
+</div>
+{% endfor %}
+{% endblock %}
+    
+    
+
+
+
+
